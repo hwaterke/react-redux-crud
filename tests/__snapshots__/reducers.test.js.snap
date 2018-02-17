@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Reducers should have a correct initial state 1`] = `
+Object {
+  "activity": Object {
+    "books": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+    "categories": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+  },
+  "resources": Object {
+    "books": Object {},
+    "categories": Object {},
+  },
+}
+`;
+
+exports[`Reducers should have a correct state after FETCH_START 1`] = `
+Object {
+  "activity": Object {
+    "books": Object {
+      "activity": 1,
+      "create": 0,
+      "fetch": 1,
+      "remove": 0,
+      "update": 0,
+    },
+    "categories": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+  },
+  "resources": Object {
+    "books": Object {},
+    "categories": Object {},
+  },
+}
+`;
+
+exports[`Reducers should have a correct state after FETCH_SUCCESS 1`] = `
+Object {
+  "activity": Object {
+    "books": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+    "categories": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+  },
+  "resources": Object {
+    "books": Object {
+      "1": Object {
+        "name": "Name",
+        "uuid": 1,
+      },
+    },
+    "categories": Object {},
+  },
+}
+`;

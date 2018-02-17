@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Selectors Activity should have a correct initial state 1`] = `
+Object {
+  "activity": 0,
+  "create": 0,
+  "fetch": 0,
+  "remove": 0,
+  "update": 0,
+}
+`;
+
+exports[`Selectors Activity should have a correct state after FETCH_START 1`] = `
+Object {
+  "activity": 1,
+  "create": 0,
+  "fetch": 1,
+  "remove": 0,
+  "update": 0,
+}
+`;
+
+exports[`Selectors Activity should have a correct state after FETCH_SUCCESS 1`] = `
+Object {
+  "activity": 0,
+  "create": 0,
+  "fetch": 0,
+  "remove": 0,
+  "update": 0,
+}
+`;
+
+exports[`Selectors Resources asArray should have a correct initial state 1`] = `Array []`;
+
+exports[`Selectors Resources asArray should have a correct state after FETCH_START 1`] = `Array []`;
+
+exports[`Selectors Resources asArray should have a correct state after FETCH_SUCCESS 1`] = `
+Array [
+  Object {
+    "name": "Name",
+    "uuid": 1,
+  },
+]
+`;
+
+exports[`Selectors Resources byId should have a correct initial state 1`] = `Object {}`;
+
+exports[`Selectors Resources byId should have a correct state after FETCH_START 1`] = `Object {}`;
+
+exports[`Selectors Resources byId should have a correct state after FETCH_SUCCESS 1`] = `
+Object {
+  "1": Object {
+    "name": "Name",
+    "uuid": 1,
+  },
+}
+`;
