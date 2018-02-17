@@ -3,5 +3,18 @@
   "version": "0.0.1",
   "repository": "git@github.com:hwaterke/react-redux-crud.git",
   "author": "hwaterke <hwaterke@users.noreply.github.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier --write 'src/**/*.js'",
+    "precommit": "lint-staged"
+  },
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "lint-staged": "^6.1.1",
+    "prettier": "^1.10.2"
+  },
+  "lint-staged": {
+    "*.js": ["prettier --write", "git add"],
+    "*.{css,scss,json,md}": ["prettier --write", "git add"]
+  }
 }
