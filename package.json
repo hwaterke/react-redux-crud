@@ -5,16 +5,24 @@
   "author": "hwaterke <hwaterke@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
+    "lint": "eslint 'src/**'",
     "format": "prettier --write 'src/**/*.js'",
     "precommit": "lint-staged"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.18.0",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-plugin-flowtype": "^2.44.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.6.1",
     "husky": "^0.14.3",
     "lint-staged": "^6.1.1",
     "prettier": "^1.10.2"
   },
   "lint-staged": {
-    "*.js": ["prettier --write", "git add"],
+    "*.js": ["prettier --write", "eslint --max-warnings 0", "git add"],
     "*.{css,scss,json,md}": ["prettier --write", "git add"]
   }
 }
