@@ -1,0 +1,7 @@
+{
+  "name": "react-redux-crud",
+  "version": "0.0.1",
+  "repository": "git@github.com:hwaterke/react-redux-crud.git",
+  "author": "hwaterke <hwaterke@users.noreply.github.com>",
+  "license": "MIT"
+}
