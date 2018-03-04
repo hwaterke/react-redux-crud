@@ -1,7 +1,10 @@
 // @flow
-import {combineReducers, createStore} from 'redux'
+import {applyMiddleware, combineReducers, createStore} from 'redux'
+import thunk from 'redux-thunk'
 import {createActivityReducersForResources} from '../src/reducers/createActivityReducersForResources'
 import {createReducersForResources} from '../src/reducers/createReducersForResources'
+import cuid from 'cuid'
+import type {CrudConfig} from '../src/thunks/createCrudThunks'
 import type {ResourceDefinition} from '../src/types/ResourceDefinition'
 
 export const Book: ResourceDefinition = {
@@ -9,6 +12,7 @@ export const Book: ResourceDefinition = {
   key: 'uuid',
   propTypes: {},
 }
+
 export const Category: ResourceDefinition = {
   name: 'categories',
   key: 'uuid',
@@ -21,5 +25,9 @@ export const initialiseStore = () => {
     activity: createActivityReducersForResources([Book, Category]),
   })
 
-  return createStore(reducer)
+  return createStore(reducer, applyMiddleware(thunk))
+}
+
+export const crudConfig: CrudConfig = {
+  cuid: () => cuid(),
 }
