@@ -1,0 +1,346 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Thunks createResource should create a record 1`] = `
+Object {
+  "activity": Object {
+    "books": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+    "categories": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+  },
+  "resources": Object {
+    "books": Object {
+      "1": Object {
+        "name": "A book",
+        "uuid": 1,
+      },
+    },
+    "categories": Object {},
+  },
+}
+`;
+
+exports[`Thunks deleteResource should delete a record 1`] = `
+Object {
+  "activity": Object {
+    "books": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+    "categories": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+  },
+  "resources": Object {
+    "books": Object {},
+    "categories": Object {},
+  },
+}
+`;
+
+exports[`Thunks deleteResource should delete an existing record 1`] = `
+Object {
+  "activity": Object {
+    "books": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+    "categories": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+  },
+  "resources": Object {
+    "books": Object {
+      "1": Object {
+        "name": "A book",
+        "uuid": 1,
+      },
+    },
+    "categories": Object {},
+  },
+}
+`;
+
+exports[`Thunks fetchAll should add custom headers 1`] = `
+Object {
+  "activity": Object {
+    "books": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+    "categories": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+  },
+  "resources": Object {
+    "books": Object {
+      "1": Object {
+        "token": "123",
+        "uuid": 1,
+      },
+    },
+    "categories": Object {},
+  },
+}
+`;
+
+exports[`Thunks fetchAll should fetch records 1`] = `
+Object {
+  "activity": Object {
+    "books": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+    "categories": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+  },
+  "resources": Object {
+    "books": Object {
+      "1": Object {
+        "name": "A book",
+        "uuid": 1,
+      },
+    },
+    "categories": Object {},
+  },
+}
+`;
+
+exports[`Thunks fetchAll should merge fetched records 1`] = `
+Object {
+  "activity": Object {
+    "books": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+    "categories": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+  },
+  "resources": Object {
+    "books": Object {
+      "1": Object {
+        "name": "A book",
+        "uuid": 1,
+      },
+      "2": Object {
+        "name": "A second book",
+        "uuid": 2,
+      },
+      "3": Object {
+        "name": "A third book",
+        "uuid": 3,
+      },
+    },
+    "categories": Object {},
+  },
+}
+`;
+
+exports[`Thunks fetchAll should replace fetched records 1`] = `
+Object {
+  "activity": Object {
+    "books": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+    "categories": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+  },
+  "resources": Object {
+    "books": Object {
+      "2": Object {
+        "name": "A second book",
+        "uuid": 2,
+      },
+      "3": Object {
+        "name": "A third book",
+        "uuid": 3,
+      },
+    },
+    "categories": Object {},
+  },
+}
+`;
+
+exports[`Thunks fetchOne should fetch one record 1`] = `
+Object {
+  "activity": Object {
+    "books": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+    "categories": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+  },
+  "resources": Object {
+    "books": Object {
+      "123": Object {
+        "name": "A book",
+        "uuid": 123,
+      },
+    },
+    "categories": Object {},
+  },
+}
+`;
+
+exports[`Thunks fetchOne should merge one record 1`] = `
+Object {
+  "activity": Object {
+    "books": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+    "categories": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+  },
+  "resources": Object {
+    "books": Object {
+      "1": Object {
+        "name": "A book",
+        "uuid": 1,
+      },
+      "2": Object {
+        "name": "A second book",
+        "uuid": 2,
+      },
+    },
+    "categories": Object {},
+  },
+}
+`;
+
+exports[`Thunks updateResource should update a record 1`] = `
+Object {
+  "activity": Object {
+    "books": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+    "categories": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+  },
+  "resources": Object {
+    "books": Object {
+      "123": Object {
+        "name": "A book",
+        "uuid": 123,
+      },
+    },
+    "categories": Object {},
+  },
+}
+`;
+
+exports[`Thunks updateResource should update an existing record 1`] = `
+Object {
+  "activity": Object {
+    "books": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+    "categories": Object {
+      "activity": 0,
+      "create": 0,
+      "fetch": 0,
+      "remove": 0,
+      "update": 0,
+    },
+  },
+  "resources": Object {
+    "books": Object {
+      "1": Object {
+        "name": "A book",
+        "uuid": 1,
+      },
+      "123": Object {
+        "name": "An updated book",
+        "uuid": 123,
+      },
+    },
+    "categories": Object {},
+  },
+}
+`;
