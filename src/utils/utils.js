@@ -7,3 +7,9 @@ export function invariant(condition: any, message: string) {
     throw error
   }
 }
+
+export function requiredParam(param: string) {
+  const error = new Error(`Required parameter, "${param}" is missing.`)
+  error.name = 'Required Parameter'
+  throw error
+}

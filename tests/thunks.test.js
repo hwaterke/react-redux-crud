@@ -1,3 +1,4 @@
+// @flow
 import {createCrudThunks} from '../src/thunks/createCrudThunks'
 import {Book, crudConfig, initialiseStore} from './utils'
 import axios from 'axios'
@@ -16,7 +17,7 @@ describe('Thunks', () => {
     it('should fetch records', async () => {
       axiosMock.onGet('/books').reply(200, [{uuid: 1, name: 'A book'}])
       const thunks = createCrudThunks(crudConfig)
-      await store.dispatch(thunks.fetchAll(Book, 'books'))
+      await store.dispatch(thunks.fetchAll({resource: Book}))
       expect(store.getState()).toMatchSnapshot()
     })
 
@@ -34,8 +35,8 @@ describe('Thunks', () => {
           {uuid: 3, name: 'A third book'},
         ])
       const thunks = createCrudThunks(crudConfig)
-      await store.dispatch(thunks.fetchAll(Book, 'books'))
-      await store.dispatch(thunks.fetchAll(Book, 'books2'))
+      await store.dispatch(thunks.fetchAll({resource: Book}))
+      await store.dispatch(thunks.fetchAll({resource: Book, path: 'books2'}))
       expect(store.getState()).toMatchSnapshot()
     })
 
@@ -53,8 +54,10 @@ describe('Thunks', () => {
           {uuid: 3, name: 'A third book'},
         ])
       const thunks = createCrudThunks(crudConfig)
-      await store.dispatch(thunks.fetchAll(Book, 'books'))
-      await store.dispatch(thunks.fetchAll(Book, 'books2', true))
+      await store.dispatch(thunks.fetchAll({resource: Book}))
+      await store.dispatch(
+        thunks.fetchAll({resource: Book, path: 'books2', replace: true})
+      )
       expect(store.getState()).toMatchSnapshot()
     })
 
@@ -67,7 +70,7 @@ describe('Thunks', () => {
         ...crudConfig,
         headersSelector: () => ({Authorization: '123'}),
       })
-      await store.dispatch(thunks.fetchAll(Book, 'books'))
+      await store.dispatch(thunks.fetchAll({resource: Book}))
       expect(store.getState()).toMatchSnapshot()
     })
 
@@ -78,7 +81,7 @@ describe('Thunks', () => {
 
       expect.assertions(1)
       try {
-        await store.dispatch(thunks.fetchAll(Book, 'books'))
+        await store.dispatch(thunks.fetchAll({resource: Book}))
       } catch (e) {
         expect(e.message).toBe('Network Error')
       }
@@ -89,7 +92,7 @@ describe('Thunks', () => {
     it('should fetch one record', async () => {
       axiosMock.onGet('/books/123').reply(200, {uuid: 123, name: 'A book'})
       const thunks = createCrudThunks(crudConfig)
-      await store.dispatch(thunks.fetchOne(Book, 'books', '123'))
+      await store.dispatch(thunks.fetchOne({resource: Book, uuid: '123'}))
       expect(store.getState()).toMatchSnapshot()
     })
 
@@ -102,8 +105,8 @@ describe('Thunks', () => {
         ])
       axiosMock.onGet('/books/2').reply(200, {uuid: 2, name: 'A second book'})
       const thunks = createCrudThunks(crudConfig)
-      await store.dispatch(thunks.fetchAll(Book, 'books'))
-      await store.dispatch(thunks.fetchOne(Book, 'books', '2'))
+      await store.dispatch(thunks.fetchAll({resource: Book}))
+      await store.dispatch(thunks.fetchOne({resource: Book, uuid: '2'}))
       expect(store.getState()).toMatchSnapshot()
     })
   })
@@ -113,7 +116,7 @@ describe('Thunks', () => {
       axiosMock.onPost('/books').reply(201, {uuid: 1, name: 'A book'})
       const thunks = createCrudThunks(crudConfig)
       await store.dispatch(
-        thunks.createResource(Book, 'books', {name: 'A book'})
+        thunks.createResource({resource: Book, entity: {name: 'A book'}})
       )
       expect(store.getState()).toMatchSnapshot()
     })
@@ -124,7 +127,10 @@ describe('Thunks', () => {
       axiosMock.onPatch('/books/123').reply(200, {uuid: 123, name: 'A book'})
       const thunks = createCrudThunks(crudConfig)
       await store.dispatch(
-        thunks.updateResource(Book, 'books', {uuid: 123, name: 'A book'})
+        thunks.updateResource({
+          resource: Book,
+          entity: {uuid: 123, name: 'A book'},
+        })
       )
       expect(store.getState()).toMatchSnapshot()
     })
@@ -140,11 +146,14 @@ describe('Thunks', () => {
         .onPatch('/books/123')
         .reply(200, {uuid: 123, name: 'An updated book'})
       const thunks = createCrudThunks(crudConfig)
-      await store.dispatch(thunks.fetchAll(Book, 'books'))
+      await store.dispatch(thunks.fetchAll({resource: Book}))
       await store.dispatch(
-        thunks.updateResource(Book, 'books', {
-          uuid: 123,
-          name: 'An updated book',
+        thunks.updateResource({
+          resource: Book,
+          entity: {
+            uuid: 123,
+            name: 'An updated book',
+          },
         })
       )
       expect(store.getState()).toMatchSnapshot()
@@ -155,7 +164,9 @@ describe('Thunks', () => {
     it('should delete a record', async () => {
       axiosMock.onDelete('/books/123').reply(204)
       const thunks = createCrudThunks(crudConfig)
-      await store.dispatch(thunks.deleteResource(Book, 'books', {uuid: 123}))
+      await store.dispatch(
+        thunks.deleteResource({resource: Book, entity: {uuid: 123}})
+      )
       expect(store.getState()).toMatchSnapshot()
     })
 
@@ -168,8 +179,10 @@ describe('Thunks', () => {
         ])
       axiosMock.onDelete('/books/123').reply(204)
       const thunks = createCrudThunks(crudConfig)
-      await store.dispatch(thunks.fetchAll(Book, 'books'))
-      await store.dispatch(thunks.deleteResource(Book, 'books', {uuid: 123}))
+      await store.dispatch(thunks.fetchAll({resource: Book}))
+      await store.dispatch(
+        thunks.deleteResource({resource: Book, entity: {uuid: 123}})
+      )
       expect(store.getState()).toMatchSnapshot()
     })
   })

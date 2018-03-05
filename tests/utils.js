@@ -10,6 +10,8 @@ import type {ResourceDefinition} from '../src/types/ResourceDefinition'
 export const Book: ResourceDefinition = {
   name: 'books',
   key: 'uuid',
+  defaultPath: 'books',
+
   propTypes: {},
 }
 
