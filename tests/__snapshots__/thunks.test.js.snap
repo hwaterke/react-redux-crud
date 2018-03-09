@@ -1,346 +1,1214 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Thunks createResource should create a record 1`] = `
-Object {
-  "activity": Object {
-    "books": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
+Array [
+  Object {
+    "data": undefined,
+    "record": Object {
+      "name": "A book",
+      "uuid": "cid0",
     },
-    "categories": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
+    "type": "BOOKS_CREATE_START",
+  },
+  Object {
+    "cid": "cid0",
+    "data": undefined,
+    "record": Object {
+      "name": "A book",
+      "uuid": 1,
+    },
+    "type": "BOOKS_CREATE_SUCCESS",
+  },
+]
+`;
+
+exports[`Thunks createResource should create a record 2`] = `
+Array [
+  Object {
+    "creating": Object {
+      "cid0": 1,
+    },
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+]
+`;
+
+exports[`Thunks createResource should create a record 3`] = `
+Array [
+  Object {
+    "cid0": Object {
+      "busy": true,
+      "name": "A book",
+      "pendingCreate": true,
+      "uuid": "cid0",
     },
   },
-  "resources": Object {
-    "books": Object {
-      "1": Object {
-        "name": "A book",
-        "uuid": 1,
-      },
+  Object {
+    "1": Object {
+      "name": "A book",
+      "uuid": 1,
     },
-    "categories": Object {},
   },
-}
+]
+`;
+
+exports[`Thunks createResource should handle errors 1`] = `
+Array [
+  Object {
+    "data": undefined,
+    "record": Object {
+      "name": "A book",
+      "uuid": "cid0",
+    },
+    "type": "BOOKS_CREATE_START",
+  },
+  Object {
+    "data": undefined,
+    "error": [Error: Network Error],
+    "record": Object {
+      "name": "A book",
+      "uuid": "cid0",
+    },
+    "type": "BOOKS_CREATE_ERROR",
+  },
+]
+`;
+
+exports[`Thunks createResource should handle errors 2`] = `
+Array [
+  Object {
+    "creating": Object {
+      "cid0": 1,
+    },
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+]
+`;
+
+exports[`Thunks createResource should handle errors 3`] = `
+Array [
+  Object {
+    "cid0": Object {
+      "busy": true,
+      "name": "A book",
+      "pendingCreate": true,
+      "uuid": "cid0",
+    },
+  },
+  Object {},
+]
 `;
 
 exports[`Thunks deleteResource should delete a record 1`] = `
-Object {
-  "activity": Object {
-    "books": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
+Array [
+  Object {
+    "data": undefined,
+    "record": Object {
+      "uuid": 123,
     },
-    "categories": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
+    "type": "BOOKS_DELETE_START",
+  },
+  Object {
+    "data": undefined,
+    "record": Object {
+      "uuid": 123,
     },
+    "type": "BOOKS_DELETE_SUCCESS",
   },
-  "resources": Object {
-    "books": Object {},
-    "categories": Object {},
+]
+`;
+
+exports[`Thunks deleteResource should delete a record 2`] = `
+Array [
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {
+      "123": 1,
+    },
+    "updating": Object {},
   },
-}
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+]
+`;
+
+exports[`Thunks deleteResource should delete a record 3`] = `
+Array [
+  Object {},
+  Object {},
+]
 `;
 
 exports[`Thunks deleteResource should delete an existing record 1`] = `
-Object {
-  "activity": Object {
-    "books": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
-    },
-    "categories": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
-    },
+Array [
+  Object {
+    "data": undefined,
+    "type": "BOOKS_FETCH_START",
   },
-  "resources": Object {
-    "books": Object {
-      "1": Object {
+  Object {
+    "data": Object {
+      "replace": false,
+    },
+    "records": Array [
+      Object {
         "name": "A book",
         "uuid": 1,
       },
-    },
-    "categories": Object {},
+      Object {
+        "name": "Another book",
+        "uuid": 123,
+      },
+    ],
+    "type": "BOOKS_FETCH_SUCCESS",
   },
-}
+  Object {
+    "data": undefined,
+    "record": Object {
+      "uuid": 123,
+    },
+    "type": "BOOKS_DELETE_START",
+  },
+  Object {
+    "data": undefined,
+    "record": Object {
+      "uuid": 123,
+    },
+    "type": "BOOKS_DELETE_SUCCESS",
+  },
+]
+`;
+
+exports[`Thunks deleteResource should delete an existing record 2`] = `
+Array [
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 1,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {
+      "123": 1,
+    },
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+]
+`;
+
+exports[`Thunks deleteResource should delete an existing record 3`] = `
+Array [
+  Object {},
+  Object {
+    "1": Object {
+      "name": "A book",
+      "uuid": 1,
+    },
+    "123": Object {
+      "name": "Another book",
+      "uuid": 123,
+    },
+  },
+  Object {
+    "1": Object {
+      "name": "A book",
+      "uuid": 1,
+    },
+    "123": Object {
+      "busy": true,
+      "deleted": true,
+      "name": "Another book",
+      "uuid": 123,
+    },
+  },
+  Object {
+    "1": Object {
+      "name": "A book",
+      "uuid": 1,
+    },
+  },
+]
+`;
+
+exports[`Thunks deleteResource should handle errors 1`] = `
+Array [
+  Object {
+    "data": undefined,
+    "type": "BOOKS_FETCH_START",
+  },
+  Object {
+    "data": Object {
+      "replace": false,
+    },
+    "records": Array [
+      Object {
+        "name": "A book",
+        "uuid": 1,
+      },
+      Object {
+        "name": "Another book",
+        "uuid": 123,
+      },
+    ],
+    "type": "BOOKS_FETCH_SUCCESS",
+  },
+  Object {
+    "data": undefined,
+    "record": Object {
+      "uuid": 123,
+    },
+    "type": "BOOKS_DELETE_START",
+  },
+  Object {
+    "data": undefined,
+    "error": [Error: Network Error],
+    "record": Object {
+      "uuid": 123,
+    },
+    "type": "BOOKS_DELETE_ERROR",
+  },
+]
+`;
+
+exports[`Thunks deleteResource should handle errors 2`] = `
+Array [
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 1,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {
+      "123": 1,
+    },
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+]
+`;
+
+exports[`Thunks deleteResource should handle errors 3`] = `
+Array [
+  Object {},
+  Object {
+    "1": Object {
+      "name": "A book",
+      "uuid": 1,
+    },
+    "123": Object {
+      "name": "Another book",
+      "uuid": 123,
+    },
+  },
+  Object {
+    "1": Object {
+      "name": "A book",
+      "uuid": 1,
+    },
+    "123": Object {
+      "busy": true,
+      "deleted": true,
+      "name": "Another book",
+      "uuid": 123,
+    },
+  },
+  Object {
+    "1": Object {
+      "name": "A book",
+      "uuid": 1,
+    },
+    "123": Object {
+      "name": "Another book",
+      "uuid": 123,
+    },
+  },
+]
 `;
 
 exports[`Thunks fetchAll should add custom headers 1`] = `
-Object {
-  "activity": Object {
-    "books": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
-    },
-    "categories": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
-    },
+Array [
+  Object {
+    "data": undefined,
+    "type": "BOOKS_FETCH_START",
   },
-  "resources": Object {
-    "books": Object {
-      "1": Object {
+  Object {
+    "data": Object {
+      "replace": false,
+    },
+    "records": Array [
+      Object {
         "token": "123",
         "uuid": 1,
       },
-    },
-    "categories": Object {},
+    ],
+    "type": "BOOKS_FETCH_SUCCESS",
   },
-}
+]
+`;
+
+exports[`Thunks fetchAll should add custom headers 2`] = `
+Array [
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 1,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+]
+`;
+
+exports[`Thunks fetchAll should add custom headers 3`] = `
+Array [
+  Object {},
+  Object {
+    "1": Object {
+      "token": "123",
+      "uuid": 1,
+    },
+  },
+]
 `;
 
 exports[`Thunks fetchAll should fetch records 1`] = `
-Object {
-  "activity": Object {
-    "books": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
-    },
-    "categories": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
-    },
+Array [
+  Object {
+    "data": undefined,
+    "type": "BOOKS_FETCH_START",
   },
-  "resources": Object {
-    "books": Object {
-      "1": Object {
+  Object {
+    "data": Object {
+      "replace": false,
+    },
+    "records": Array [
+      Object {
         "name": "A book",
         "uuid": 1,
       },
-    },
-    "categories": Object {},
+    ],
+    "type": "BOOKS_FETCH_SUCCESS",
   },
-}
+]
+`;
+
+exports[`Thunks fetchAll should fetch records 2`] = `
+Array [
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 1,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+]
+`;
+
+exports[`Thunks fetchAll should fetch records 3`] = `
+Array [
+  Object {},
+  Object {
+    "1": Object {
+      "name": "A book",
+      "uuid": 1,
+    },
+  },
+]
+`;
+
+exports[`Thunks fetchAll should handle errors 1`] = `
+Array [
+  Object {
+    "data": undefined,
+    "type": "BOOKS_FETCH_START",
+  },
+  Object {
+    "data": undefined,
+    "error": [Error: Network Error],
+    "type": "BOOKS_FETCH_ERROR",
+  },
+]
+`;
+
+exports[`Thunks fetchAll should handle errors 2`] = `
+Array [
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 1,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+]
+`;
+
+exports[`Thunks fetchAll should handle errors 3`] = `
+Array [
+  Object {},
+  Object {},
+]
 `;
 
 exports[`Thunks fetchAll should merge fetched records 1`] = `
-Object {
-  "activity": Object {
-    "books": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
-    },
-    "categories": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
-    },
+Array [
+  Object {
+    "data": undefined,
+    "type": "BOOKS_FETCH_START",
   },
-  "resources": Object {
-    "books": Object {
-      "1": Object {
+  Object {
+    "data": Object {
+      "replace": false,
+    },
+    "records": Array [
+      Object {
         "name": "A book",
         "uuid": 1,
       },
-      "2": Object {
+      Object {
+        "name": "Another book",
+        "uuid": 2,
+      },
+    ],
+    "type": "BOOKS_FETCH_SUCCESS",
+  },
+  Object {
+    "data": undefined,
+    "type": "BOOKS_FETCH_START",
+  },
+  Object {
+    "data": Object {
+      "replace": false,
+    },
+    "records": Array [
+      Object {
         "name": "A second book",
         "uuid": 2,
       },
-      "3": Object {
+      Object {
         "name": "A third book",
         "uuid": 3,
       },
-    },
-    "categories": Object {},
+    ],
+    "type": "BOOKS_FETCH_SUCCESS",
   },
-}
+]
+`;
+
+exports[`Thunks fetchAll should merge fetched records 2`] = `
+Array [
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 1,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 1,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+]
+`;
+
+exports[`Thunks fetchAll should merge fetched records 3`] = `
+Array [
+  Object {},
+  Object {
+    "1": Object {
+      "name": "A book",
+      "uuid": 1,
+    },
+    "2": Object {
+      "name": "Another book",
+      "uuid": 2,
+    },
+  },
+  Object {
+    "1": Object {
+      "name": "A book",
+      "uuid": 1,
+    },
+    "2": Object {
+      "name": "Another book",
+      "uuid": 2,
+    },
+  },
+  Object {
+    "1": Object {
+      "name": "A book",
+      "uuid": 1,
+    },
+    "2": Object {
+      "name": "A second book",
+      "uuid": 2,
+    },
+    "3": Object {
+      "name": "A third book",
+      "uuid": 3,
+    },
+  },
+]
 `;
 
 exports[`Thunks fetchAll should replace fetched records 1`] = `
-Object {
-  "activity": Object {
-    "books": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
-    },
-    "categories": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
-    },
+Array [
+  Object {
+    "data": undefined,
+    "type": "BOOKS_FETCH_START",
   },
-  "resources": Object {
-    "books": Object {
-      "2": Object {
+  Object {
+    "data": Object {
+      "replace": false,
+    },
+    "records": Array [
+      Object {
+        "name": "A book",
+        "uuid": 1,
+      },
+      Object {
+        "name": "Another book",
+        "uuid": 2,
+      },
+    ],
+    "type": "BOOKS_FETCH_SUCCESS",
+  },
+  Object {
+    "data": undefined,
+    "type": "BOOKS_FETCH_START",
+  },
+  Object {
+    "data": Object {
+      "replace": true,
+    },
+    "records": Array [
+      Object {
         "name": "A second book",
         "uuid": 2,
       },
-      "3": Object {
+      Object {
         "name": "A third book",
         "uuid": 3,
       },
-    },
-    "categories": Object {},
+    ],
+    "type": "BOOKS_FETCH_SUCCESS",
   },
-}
+]
+`;
+
+exports[`Thunks fetchAll should replace fetched records 2`] = `
+Array [
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 1,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 1,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+]
+`;
+
+exports[`Thunks fetchAll should replace fetched records 3`] = `
+Array [
+  Object {},
+  Object {
+    "1": Object {
+      "name": "A book",
+      "uuid": 1,
+    },
+    "2": Object {
+      "name": "Another book",
+      "uuid": 2,
+    },
+  },
+  Object {
+    "1": Object {
+      "name": "A book",
+      "uuid": 1,
+    },
+    "2": Object {
+      "name": "Another book",
+      "uuid": 2,
+    },
+  },
+  Object {
+    "2": Object {
+      "name": "A second book",
+      "uuid": 2,
+    },
+    "3": Object {
+      "name": "A third book",
+      "uuid": 3,
+    },
+  },
+]
 `;
 
 exports[`Thunks fetchOne should fetch one record 1`] = `
-Object {
-  "activity": Object {
-    "books": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
+Array [
+  Object {
+    "data": Object {
+      "fetchOne": "123",
     },
-    "categories": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
+    "type": "BOOKS_FETCH_START",
+  },
+  Object {
+    "data": Object {
+      "fetchOne": "123",
+    },
+    "records": Object {
+      "name": "A book",
+      "uuid": 123,
+    },
+    "type": "BOOKS_FETCH_SUCCESS",
+  },
+]
+`;
+
+exports[`Thunks fetchOne should fetch one record 2`] = `
+Array [
+  Object {
+    "creating": Object {},
+    "fetching": Object {
+      "123": 1,
+    },
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+]
+`;
+
+exports[`Thunks fetchOne should fetch one record 3`] = `
+Array [
+  Object {},
+  Object {
+    "123": Object {
+      "name": "A book",
+      "uuid": 123,
     },
   },
-  "resources": Object {
-    "books": Object {
-      "123": Object {
-        "name": "A book",
-        "uuid": 123,
-      },
+]
+`;
+
+exports[`Thunks fetchOne should handle errors 1`] = `
+Array [
+  Object {
+    "data": Object {
+      "fetchOne": "2",
     },
-    "categories": Object {},
+    "type": "BOOKS_FETCH_START",
   },
-}
+  Object {
+    "data": Object {
+      "fetchOne": "2",
+    },
+    "error": [Error: Network Error],
+    "type": "BOOKS_FETCH_ERROR",
+  },
+]
+`;
+
+exports[`Thunks fetchOne should handle errors 2`] = `
+Array [
+  Object {
+    "creating": Object {},
+    "fetching": Object {
+      "2": 1,
+    },
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+]
+`;
+
+exports[`Thunks fetchOne should handle errors 3`] = `
+Array [
+  Object {},
+  Object {},
+]
 `;
 
 exports[`Thunks fetchOne should merge one record 1`] = `
-Object {
-  "activity": Object {
-    "books": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
-    },
-    "categories": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
-    },
+Array [
+  Object {
+    "data": undefined,
+    "type": "BOOKS_FETCH_START",
   },
-  "resources": Object {
-    "books": Object {
-      "1": Object {
+  Object {
+    "data": Object {
+      "replace": false,
+    },
+    "records": Array [
+      Object {
         "name": "A book",
         "uuid": 1,
       },
-      "2": Object {
-        "name": "A second book",
+      Object {
+        "name": "Another book",
         "uuid": 2,
       },
-    },
-    "categories": Object {},
+    ],
+    "type": "BOOKS_FETCH_SUCCESS",
   },
-}
+  Object {
+    "data": Object {
+      "fetchOne": "2",
+    },
+    "type": "BOOKS_FETCH_START",
+  },
+  Object {
+    "data": Object {
+      "fetchOne": "2",
+    },
+    "records": Object {
+      "name": "A second book",
+      "uuid": 2,
+    },
+    "type": "BOOKS_FETCH_SUCCESS",
+  },
+]
+`;
+
+exports[`Thunks fetchOne should merge one record 2`] = `
+Array [
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 1,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {
+      "2": 1,
+    },
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+]
+`;
+
+exports[`Thunks fetchOne should merge one record 3`] = `
+Array [
+  Object {},
+  Object {
+    "1": Object {
+      "name": "A book",
+      "uuid": 1,
+    },
+    "2": Object {
+      "name": "Another book",
+      "uuid": 2,
+    },
+  },
+  Object {
+    "1": Object {
+      "name": "A book",
+      "uuid": 1,
+    },
+    "2": Object {
+      "name": "Another book",
+      "uuid": 2,
+    },
+  },
+  Object {
+    "1": Object {
+      "name": "A book",
+      "uuid": 1,
+    },
+    "2": Object {
+      "name": "A second book",
+      "uuid": 2,
+    },
+  },
+]
+`;
+
+exports[`Thunks updateResource should handle errors 1`] = `
+Array [
+  Object {
+    "data": undefined,
+    "record": Object {
+      "name": "An updated book",
+      "uuid": 123,
+    },
+    "type": "BOOKS_UPDATE_START",
+  },
+  Object {
+    "data": undefined,
+    "error": [Error: Network Error],
+    "record": Object {
+      "name": "An updated book",
+      "uuid": 123,
+    },
+    "type": "BOOKS_UPDATE_ERROR",
+  },
+]
+`;
+
+exports[`Thunks updateResource should handle errors 2`] = `
+Array [
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {
+      "123": 1,
+    },
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+]
+`;
+
+exports[`Thunks updateResource should handle errors 3`] = `
+Array [
+  Object {
+    "123": Object {
+      "busy": true,
+      "name": "An updated book",
+      "pendingUpdate": true,
+      "uuid": 123,
+    },
+  },
+  Object {
+    "123": Object {
+      "name": "An updated book",
+      "pendingUpdate": true,
+      "uuid": 123,
+    },
+  },
+]
 `;
 
 exports[`Thunks updateResource should update a record 1`] = `
-Object {
-  "activity": Object {
-    "books": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
+Array [
+  Object {
+    "data": undefined,
+    "record": Object {
+      "name": "A book",
+      "uuid": 123,
     },
-    "categories": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
+    "type": "BOOKS_UPDATE_START",
+  },
+  Object {
+    "data": undefined,
+    "record": Object {
+      "name": "A book",
+      "uuid": 123,
+    },
+    "type": "BOOKS_UPDATE_SUCCESS",
+  },
+]
+`;
+
+exports[`Thunks updateResource should update a record 2`] = `
+Array [
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {
+      "123": 1,
     },
   },
-  "resources": Object {
-    "books": Object {
-      "123": Object {
-        "name": "A book",
-        "uuid": 123,
-      },
-    },
-    "categories": Object {},
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
   },
-}
+]
+`;
+
+exports[`Thunks updateResource should update a record 3`] = `
+Array [
+  Object {
+    "123": Object {
+      "busy": true,
+      "name": "A book",
+      "pendingUpdate": true,
+      "uuid": 123,
+    },
+  },
+  Object {
+    "123": Object {
+      "name": "A book",
+      "uuid": 123,
+    },
+  },
+]
 `;
 
 exports[`Thunks updateResource should update an existing record 1`] = `
-Object {
-  "activity": Object {
-    "books": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
-    },
-    "categories": Object {
-      "activity": 0,
-      "create": 0,
-      "fetch": 0,
-      "remove": 0,
-      "update": 0,
-    },
+Array [
+  Object {
+    "data": undefined,
+    "type": "BOOKS_FETCH_START",
   },
-  "resources": Object {
-    "books": Object {
-      "1": Object {
+  Object {
+    "data": Object {
+      "replace": false,
+    },
+    "records": Array [
+      Object {
         "name": "A book",
         "uuid": 1,
       },
-      "123": Object {
-        "name": "An updated book",
+      Object {
+        "name": "Another book",
         "uuid": 123,
       },
-    },
-    "categories": Object {},
+    ],
+    "type": "BOOKS_FETCH_SUCCESS",
   },
-}
+  Object {
+    "data": undefined,
+    "record": Object {
+      "name": "An updated book",
+      "uuid": 123,
+    },
+    "type": "BOOKS_UPDATE_START",
+  },
+  Object {
+    "data": undefined,
+    "record": Object {
+      "name": "An updated book",
+      "uuid": 123,
+    },
+    "type": "BOOKS_UPDATE_SUCCESS",
+  },
+]
+`;
+
+exports[`Thunks updateResource should update an existing record 2`] = `
+Array [
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 1,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {
+      "123": 1,
+    },
+  },
+  Object {
+    "creating": Object {},
+    "fetching": Object {},
+    "fetchingAll": 0,
+    "removing": Object {},
+    "updating": Object {},
+  },
+]
+`;
+
+exports[`Thunks updateResource should update an existing record 3`] = `
+Array [
+  Object {},
+  Object {
+    "1": Object {
+      "name": "A book",
+      "uuid": 1,
+    },
+    "123": Object {
+      "name": "Another book",
+      "uuid": 123,
+    },
+  },
+  Object {
+    "1": Object {
+      "name": "A book",
+      "uuid": 1,
+    },
+    "123": Object {
+      "busy": true,
+      "name": "An updated book",
+      "pendingUpdate": true,
+      "uuid": 123,
+    },
+  },
+  Object {
+    "1": Object {
+      "name": "A book",
+      "uuid": 1,
+    },
+    "123": Object {
+      "name": "An updated book",
+      "uuid": 123,
+    },
+  },
+]
 `;

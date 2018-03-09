@@ -117,7 +117,7 @@ export function createCrudThunks(configuration: CrudConfig) {
         key: resource.key,
       })
 
-      dispatch(baseActionCreators.fetchStart())
+      dispatch(baseActionCreators.fetchStart({fetchOne: uuid}))
 
       const promise = axios({
         url: `${config.backendSelector(getState())}/${resourcePath}/${uuid}`,
@@ -130,12 +130,17 @@ export function createCrudThunks(configuration: CrudConfig) {
           response => {
             dispatch(
               baseActionCreators.fetchSuccess(
-                config.fetchOneDataToRecord(response.data)
+                config.fetchOneDataToRecord(response.data),
+                {fetchOne: uuid}
               )
             )
           },
           error => {
-            dispatch(baseActionCreators.fetchError(dataOrError(error)))
+            dispatch(
+              baseActionCreators.fetchError(dataOrError(error), {
+                fetchOne: uuid,
+              })
+            )
             config.onError(resource, 'fetchOne', error, dispatch)
           }
         )

@@ -2,31 +2,31 @@
 
 exports[`Selectors Activity should have a correct initial state 1`] = `
 Object {
-  "activity": 0,
-  "create": 0,
-  "fetch": 0,
-  "remove": 0,
-  "update": 0,
+  "creating": Object {},
+  "fetching": Object {},
+  "fetchingAll": 0,
+  "removing": Object {},
+  "updating": Object {},
 }
 `;
 
 exports[`Selectors Activity should have a correct state after FETCH_START 1`] = `
 Object {
-  "activity": 1,
-  "create": 0,
-  "fetch": 1,
-  "remove": 0,
-  "update": 0,
+  "creating": Object {},
+  "fetching": Object {},
+  "fetchingAll": 1,
+  "removing": Object {},
+  "updating": Object {},
 }
 `;
 
 exports[`Selectors Activity should have a correct state after FETCH_SUCCESS 1`] = `
 Object {
-  "activity": 0,
-  "create": 0,
-  "fetch": 0,
-  "remove": 0,
-  "update": 0,
+  "creating": Object {},
+  "fetching": Object {},
+  "fetchingAll": 0,
+  "removing": Object {},
+  "updating": Object {},
 }
 `;
 

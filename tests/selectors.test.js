@@ -1,8 +1,6 @@
 // @flow
 import reduxCrud from 'redux-crud/dist/index'
-import type {ActivityResourceSelector} from '../src/selectors/createResourceActivitySelector'
-import {createResourceActivitySelector} from '../src/selectors/createResourceActivitySelector'
-import {createResourceSelectors} from '../src/selectors/createResourceSelectors'
+import {select} from '../src/selectors/select'
 import {Book, initialiseStore} from './utils'
 
 describe('Selectors', () => {
@@ -13,15 +11,9 @@ describe('Selectors', () => {
   })
 
   describe('Resources', () => {
-    let selector
-
-    beforeEach(() => {
-      selector = createResourceSelectors(state => state.resources)
-    })
-
     describe('byId', () => {
       test('should have a correct initial state', function() {
-        const state = selector.byId(Book)(store.getState())
+        const state = select(Book).byId(store.getState())
         expect(state).toMatchSnapshot()
       })
 
@@ -29,7 +21,7 @@ describe('Selectors', () => {
         const actionTypes = reduxCrud.actionTypesFor(Book.name)
         store.dispatch({type: actionTypes.fetchStart})
 
-        const state = selector.byId(Book)(store.getState())
+        const state = select(Book).byId(store.getState())
         expect(state).toMatchSnapshot()
       })
 
@@ -41,14 +33,14 @@ describe('Selectors', () => {
           records: [{uuid: 1, name: 'Name'}],
         })
 
-        const state = selector.byId(Book)(store.getState())
+        const state = select(Book).byId(store.getState())
         expect(state).toMatchSnapshot()
       })
     })
 
     describe('asArray', () => {
       test('should have a correct initial state', function() {
-        const state = selector.asArray(Book)(store.getState())
+        const state = select(Book).asArray(store.getState())
         expect(state).toMatchSnapshot()
       })
 
@@ -56,7 +48,7 @@ describe('Selectors', () => {
         const actionTypes = reduxCrud.actionTypesFor(Book.name)
         store.dispatch({type: actionTypes.fetchStart})
 
-        const state = selector.asArray(Book)(store.getState())
+        const state = select(Book).asArray(store.getState())
         expect(state).toMatchSnapshot()
       })
 
@@ -68,21 +60,15 @@ describe('Selectors', () => {
           records: [{uuid: 1, name: 'Name'}],
         })
 
-        const state = selector.asArray(Book)(store.getState())
+        const state = select(Book).asArray(store.getState())
         expect(state).toMatchSnapshot()
       })
     })
   })
 
   describe('Activity', () => {
-    let selector: ActivityResourceSelector
-
-    beforeEach(() => {
-      selector = createResourceActivitySelector(state => state.activity)
-    })
-
     test('should have a correct initial state', function() {
-      const state = selector(Book)(store.getState())
+      const state = select(Book).activity.all(store.getState())
       expect(state).toMatchSnapshot()
     })
 
@@ -90,7 +76,7 @@ describe('Selectors', () => {
       const actionTypes = reduxCrud.actionTypesFor(Book.name)
       store.dispatch({type: actionTypes.fetchStart})
 
-      const state = selector(Book)(store.getState())
+      const state = select(Book).activity.all(store.getState())
       expect(state).toMatchSnapshot()
     })
 
@@ -102,7 +88,7 @@ describe('Selectors', () => {
         records: [{uuid: 1, name: 'Name'}],
       })
 
-      const state = selector(Book)(store.getState())
+      const state = select(Book).activity.all(store.getState())
       expect(state).toMatchSnapshot()
     })
   })
