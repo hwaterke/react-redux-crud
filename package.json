@@ -19,6 +19,7 @@
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
+    "ramda": "^0.25.0",
     "redux-crud": "^3.2.0"
   },
   "devDependencies": {
