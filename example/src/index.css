@@ -1,0 +1,58 @@
+body {
+  color: #4a4a4a;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+nav {
+  display: flex;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+nav a {
+  display: block;
+  padding: 1rem 2rem;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: white;
+  background-color: gray;
+}
+
+section {
+  padding: 1rem 2rem;
+  max-width: 600px;
+}
+
+input {
+  padding: 0.5rem;
+  border: 1px solid #dbdbdb;
+}
+
+input:focus {
+  border: 1px solid #3273dc;
+  outline: none;
+}
+
+button {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #dbdbdb;
+  background-color: #ddd;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 1rem 2rem;
+  border-left: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+  border-top: 1px solid #dbdbdb;
+}
+
+li:last-child {
+  border-bottom: 1px solid #dbdbdb;
+}

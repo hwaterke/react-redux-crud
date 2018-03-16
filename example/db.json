@@ -1,0 +1,34 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "name": "A book",
+      "uuid": "1"
+    },
+    {
+      "id": "2",
+      "name": "A second book",
+      "uuid": "2"
+    },
+    {
+      "id": "3",
+      "name": "A third book of stuff",
+      "uuid": "3"
+    },
+    {
+      "name": "Hello you",
+      "id": "cjefza1ba0000ionsh4tw0kiw",
+      "uuid": "cjefza1ba0000ionsh4tw0kiw"
+    },
+    {
+      "name": "Hum",
+      "id": "cjeg6ytj50001ionswn8mgcxb",
+      "uuid": "cjeg6ytj50001ionswn8mgcxb"
+    },
+    {
+      "name": "newbook or stuff",
+      "id": "cjeszfmwr0000ionsm14za1mu",
+      "uuid": "cjeszfmwr0000ionsm14za1mu"
+    }
+  ]
+}

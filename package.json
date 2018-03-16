@@ -1,8 +1,8 @@
 {
-  "name": "react-redux-crud",
-  "version": "0.0.1",
+  "name": "redux-crud-provider",
+  "version": "0.0.1-alpha.0",
   "main": "build/index.js",
-  "repository": "git@github.com:hwaterke/react-redux-crud.git",
+  "repository": "git@github.com:hwaterke/redux-crud-provider.git",
   "author": "hwaterke <hwaterke@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
@@ -40,6 +40,8 @@
     "jest": "^22.3.0",
     "lint-staged": "^7.0.0",
     "prettier": "^1.10.2",
+    "react": "^16.2.0",
+    "react-redux": "^5.0.7",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1"

@@ -1,0 +1,25 @@
+{
+  "name": "redux-crud-provider-example",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "server": "json-server -p 5000 --delay 1000 db.json"
+  },
+  "dependencies": {
+    "cuid": "^2.1.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "redux-crud-provider": "^0.0.1-alpha.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.1",
+    "redux": "^3.7.2",
+    "redux-form": "^7.3.0",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "json-server": "^0.12.1"
+  }
+}
