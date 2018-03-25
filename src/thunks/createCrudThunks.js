@@ -110,7 +110,9 @@ export function createCrudThunks(configuration: CrudConfig) {
       path?: string,
       uuid: string,
     }) => (dispatch: Function, getState: Function) => {
-      const resourcePath = path || resource.defaultPath
+      const resourcePath =
+        path ||
+        (resource.defaultPath ? `${resource.defaultPath}/${uuid}` : null)
       invariant(resourcePath, 'You need to specify a path to fetch a record')
 
       const baseActionCreators = reduxCrud.actionCreatorsFor(resource.name, {
@@ -120,7 +122,7 @@ export function createCrudThunks(configuration: CrudConfig) {
       dispatch(baseActionCreators.fetchStart({fetchOne: uuid}))
 
       const promise = axios({
-        url: `${config.backendSelector(getState())}/${resourcePath}/${uuid}`,
+        url: `${config.backendSelector(getState())}/${resourcePath}`,
         method: 'get',
         headers: config.headersSelector(getState()),
       })
@@ -213,7 +215,11 @@ export function createCrudThunks(configuration: CrudConfig) {
       path?: string,
       entity: any,
     }) => (dispatch: Function, getState: Function) => {
-      const resourcePath = path || resource.defaultPath
+      const resourcePath =
+        path ||
+        (resource.defaultPath
+          ? `${resource.defaultPath}/${entity[resource.key]}`
+          : null)
       invariant(resourcePath, 'You need to specify a path to update a record')
       invariant(
         entity[resource.key],
@@ -227,9 +233,7 @@ export function createCrudThunks(configuration: CrudConfig) {
       dispatch(baseActionCreators.updateStart(entity))
 
       const promise = axios({
-        url: `${config.backendSelector(getState())}/${resourcePath}/${
-          entity[resource.key]
-        }`,
+        url: `${config.backendSelector(getState())}/${resourcePath}`,
         method: 'patch',
         headers: config.headersSelector(getState()),
         data: entity,
@@ -265,7 +269,11 @@ export function createCrudThunks(configuration: CrudConfig) {
       path?: string,
       entity: any,
     }) => (dispatch: Function, getState: Function) => {
-      const resourcePath = path || resource.defaultPath
+      const resourcePath =
+        path ||
+        (resource.defaultPath
+          ? `${resource.defaultPath}/${entity[resource.key]}`
+          : null)
       invariant(resourcePath, 'You need to specify a path to delete a record')
       invariant(
         entity[resource.key],
@@ -279,9 +287,7 @@ export function createCrudThunks(configuration: CrudConfig) {
       dispatch(baseActionCreators.deleteStart(entity))
 
       const promise = axios({
-        url: `${config.backendSelector(getState())}/${resourcePath}/${
-          entity[resource.key]
-        }`,
+        url: `${config.backendSelector(getState())}/${resourcePath}`,
         method: 'delete',
         headers: config.headersSelector(getState()),
       })
