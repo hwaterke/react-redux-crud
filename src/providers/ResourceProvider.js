@@ -89,7 +89,7 @@ class _ResourceProvider extends React.Component {
     }
   }
 
-  updateResource = data => {
+  updateEntity = data => {
     const entity = {
       ...data,
       uuid: this.props.uuid,
@@ -130,8 +130,13 @@ class _ResourceProvider extends React.Component {
     return this.props.children({
       entity,
       fetchEntity: this.fetchEntity,
-      updateEntity: this.updateResource,
+      updateEntity: this.updateEntity,
       deleteEntity: this.deleteEntity,
+      thunks: {
+        fetchOne: this.props.fetchOne,
+        updateResource: this.props.updateResource,
+        deleteResource: this.props.deleteResource,
+      },
       isFetching,
       isUpdating,
       isRemoving,
