@@ -58,10 +58,12 @@ export function createCrudThunks(configuration: CrudConfig) {
       resource = requiredParam('resource'),
       path,
       replace = false,
+      params,
     }: {
       resource: ResourceDefinition,
       path?: string,
       replace?: boolean,
+      params?: {[string]: string},
     }) => (dispatch: Function, getState: Function) => {
       const resourcePath = path || resource.defaultPath
 
@@ -77,6 +79,7 @@ export function createCrudThunks(configuration: CrudConfig) {
         url: `${config.backendSelector(getState())}/${resourcePath}`,
         method: 'get',
         headers: config.headersSelector(getState()),
+        params,
       })
 
       promise
@@ -105,10 +108,12 @@ export function createCrudThunks(configuration: CrudConfig) {
       resource = requiredParam('resource'),
       path,
       uuid = requiredParam('uuid'),
+      params,
     }: {
       resource: ResourceDefinition,
       path?: string,
       uuid: string,
+      params?: {[string]: string},
     }) => (dispatch: Function, getState: Function) => {
       const resourcePath =
         path ||
@@ -125,6 +130,7 @@ export function createCrudThunks(configuration: CrudConfig) {
         url: `${config.backendSelector(getState())}/${resourcePath}`,
         method: 'get',
         headers: config.headersSelector(getState()),
+        params,
       })
 
       promise

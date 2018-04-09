@@ -26,6 +26,7 @@ class _ResourceListProvider extends React.Component {
       key: PropTypes.string.isRequired,
     }).isRequired,
     path: PropTypes.string,
+    params: PropTypes.object,
     replace: PropTypes.bool,
     autoFetch: PropTypes.bool,
     loadingRender: PropTypes.node,
@@ -51,10 +52,11 @@ class _ResourceListProvider extends React.Component {
     initialLoading: this.props.autoFetch,
   }
 
-  fetchAll = ({replace = null} = {}) => {
+  fetchAll = ({replace = null, params = null} = {}) => {
     this.props.fetchAll({
       resource: this.props.resource,
       path: this.props.path,
+      params: params === null ? this.props.params : params,
       replace: replace === null ? this.props.replace : replace,
     })
   }

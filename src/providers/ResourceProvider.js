@@ -29,6 +29,7 @@ class _ResourceProvider extends React.Component {
       key: PropTypes.string.isRequired,
     }).isRequired,
     path: PropTypes.string,
+    params: PropTypes.object,
     autoFetch: PropTypes.bool,
     loadingRender: PropTypes.node,
     postAction: PropTypes.func,
@@ -61,10 +62,11 @@ class _ResourceProvider extends React.Component {
     initialLoading: this.props.autoFetch,
   }
 
-  fetchEntity = () => {
+  fetchEntity = ({params = null} = {}) => {
     return this.props.fetchOne({
       resource: this.props.resource,
       path: this.props.path,
+      params: params === null ? this.props.params : params,
       uuid: this.props.uuid,
     })
   }
