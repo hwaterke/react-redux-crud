@@ -79,7 +79,15 @@ class _ResourceProvider extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const {uuid, postAction, activity: {updating, removing}} = this.props
+    const {
+      autoFetch,
+      resource,
+      path,
+      params,
+      uuid,
+      postAction,
+      activity: {updating, removing},
+    } = this.props
 
     if (prevProps.uuid === uuid && postAction) {
       if (
@@ -87,6 +95,18 @@ class _ResourceProvider extends React.Component {
         (prevProps.activity.removing[uuid] && !removing[uuid])
       ) {
         postAction()
+      }
+    }
+
+    // Fetch record if fetching data changed
+    if (autoFetch) {
+      if (
+        resource !== prevProps.resource ||
+        path !== prevProps.path ||
+        params !== prevProps.params ||
+        uuid !== prevProps.uuid
+      ) {
+        this.fetchEntity()
       }
     }
   }

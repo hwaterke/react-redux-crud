@@ -68,6 +68,22 @@ class _ResourceListProvider extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    const {autoFetch, resource, path, params, replace} = this.props
+
+    // Fetch records if fetching data changed
+    if (autoFetch) {
+      if (
+        resource !== prevProps.resource ||
+        path !== prevProps.path ||
+        params !== prevProps.params ||
+        replace !== prevProps.replace
+      ) {
+        this.fetchAll()
+      }
+    }
+  }
+
   render() {
     const {loadingRender, entities, fetchAllActivity} = this.props
 
