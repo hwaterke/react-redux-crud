@@ -16,6 +16,7 @@ export {select} from './selectors/select'
 export {createCrudThunks} from './thunks/createCrudThunks'
 
 // Providers
+export {ResourceCreator} from './providers/ResourceCreator'
 export {ResourceListProvider} from './providers/ResourceListProvider'
 export {ResourceProvider} from './providers/ResourceProvider'
 
