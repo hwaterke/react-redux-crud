@@ -215,10 +215,12 @@ export function createCrudThunks(configuration: CrudConfig) {
     updateResource: ({
       resource = requiredParam('resource'),
       path,
+      merge = true,
       entity = requiredParam('entity'),
     }: {
       resource: ResourceDefinition,
       path?: string,
+      merge?: boolean,
       entity: any,
     }) => (dispatch: Function, getState: Function) => {
       const resourcePath =
@@ -236,7 +238,7 @@ export function createCrudThunks(configuration: CrudConfig) {
         key: resource.key,
       })
 
-      dispatch(baseActionCreators.updateStart(entity))
+      dispatch(baseActionCreators.updateStart(entity, {merge}))
 
       const promise = axios({
         url: `${config.backendSelector(getState())}/${resourcePath}`,
