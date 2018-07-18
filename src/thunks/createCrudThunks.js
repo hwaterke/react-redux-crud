@@ -12,18 +12,63 @@ function dataOrError(error) {
 }
 
 export type CrudConfig = {
+  /**
+   * An optional function that returns the base url of the backend.
+   * First argument is the redux state.
+   * Default is an empty string
+   */
   backendSelector?: (state: any) => string,
+
+  /**
+   * An optional function that returns headers to use in every request.
+   * First argument is the redux state.
+   * Default is an empty object
+   * This can be used to add an Authorization token which is stored in redux.
+   */
   headersSelector?: (state: any) => {[headerName: string]: string},
+
+  /**
+   * This optional function is called whenever an error occurs.
+   */
   onError?: (
     resource: ResourceDefinition,
     operation: string,
     error: any,
     dispatch: Function
   ) => void,
+
+  /**
+   * This mandatory function is used to generated a unique id for a entity being created.
+   * This is used for optimistic creation
+   */
   cuid: () => string,
+
+  /**
+   * This optional function is used to select the record array from a fetchAll response from the backend.
+   * The first parameter is the body of the response.
+   * The default implementation is the identity function
+   */
   fetchAllDataToRecords?: (responseData: any) => any[],
+
+  /**
+   * This optional function is used to select the record from a fetchOne response from the backend.
+   * The first parameter is the body of the response.
+   * The default implementation is the identity function
+   */
   fetchOneDataToRecord?: (responseData: any) => any,
+
+  /**
+   * This optional function is used to select the record from a create response from the backend.
+   * The first parameter is the body of the response.
+   * The default implementation is the identity function
+   */
   createDataToRecord?: (responseData: any) => any,
+
+  /**
+   * This optional function is used to select the record from an update response from the backend.
+   * The first parameter is the body of the response.
+   * The default implementation is the identity function
+   */
   updateDataToRecord?: (responseData: any) => any,
 }
 

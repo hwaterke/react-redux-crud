@@ -3,10 +3,10 @@ export type ResourceDefinition = {
   // A unique name for the resource
   name: string,
 
-  // The primary key of the resource
+  // The primary key of the resource e.g. uuid
   key: string,
 
-  // The default path on the backend where the resource is available
+  // The default path on the backend where the resource is available e.g. users
   defaultPath?: string,
 
   // PropTypes for this resource
