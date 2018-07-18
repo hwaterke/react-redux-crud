@@ -1,6 +1,6 @@
 {
   "name": "redux-crud-provider",
-  "version": "0.0.1-alpha.3",
+  "version": "0.0.1-alpha.4",
   "main": "build/index.js",
   "repository": "git@github.com:hwaterke/redux-crud-provider.git",
   "author": "hwaterke <hwaterke@users.noreply.github.com>",
