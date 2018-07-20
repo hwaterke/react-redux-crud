@@ -175,6 +175,51 @@ The children function will be called with an object with the following propertie
 | `fetchAll` | function | A function to trigger a fetch from the backend      |
 | `loading`  | boolean  | `true` when there is an ongoing call to the backend |
 
+### ResourceProvider
+
+Example:
+
+```js
+<ResourceProvider
+  crudThunks={crudThunks}
+  resource={Book}
+  uuid={match.params.uuid}
+>
+  {({entity}) => <h1>{entity.name}</h1>}
+</ResourceProvider>
+```
+
+**Props**
+
+| Name            | Type               | Required | Description                                                                                  |
+| --------------- | ------------------ | -------- | -------------------------------------------------------------------------------------------- |
+| `children`      | function           | yes      | Render prop, see description below                                                           |
+| `resource`      | ResourceDefinition | yes      | The resource to use                                                                          |
+| `uuid`          | string             | yes      | The uuid of the entity to manage                                                             |
+| `path`          | string             |          | Passed to `crudThunks.fetchOne`, `crudThunks.updateResource` and `crudThunks.deleteResource` |
+| `params`        | object             |          | Passed to `crudThunks.fetchOne`                                                              |
+| `autoFetch`     | boolean            |          | Triggers a call do the backend automatically to refresh the data in redux                    |
+| `loadingRender` | React Element      |          | A react element to render while data are being fetched                                       |
+| `crudThunks`    | object             | yes      | The result of createCrudThunks                                                               |
+| `postAction`    | function           |          | A function called after a successful update or delete                                        |
+
+**Children function**
+
+The children function will be called with an object with the following properties:
+
+| Name                    | Type     | Description                                            |
+| ----------------------- | -------- | ------------------------------------------------------ |
+| `entity`                | any      | The entity                                             |
+| `fetchEntity`           | function | A function to re-fetch the entity from the backend     |
+| `updateEntity`          | function | A function to update the entity (calls the backend)    |
+| `deleteEntity`          | function | A function to delete the entity (calls the backend)    |
+| `thunks.fetchOne`       | function | The `fetchOne` thunk already bound to `dispatch`       |
+| `thunks.updateResource` | function | The `updateResource` thunk already bound to `dispatch` |
+| `thunks.deleteResource` | function | The `deleteResource` thunk already bound to `dispatch` |
+| `isFetching`            | boolean  | True when the entity is being fetched                  |
+| `isUpdating`            | boolean  | True when the entity is being updated                  |
+| `isRemoving`            | boolean  | True when the entity is being deleted                  |
+
 # Peer dependencies
 
 - `axios`
