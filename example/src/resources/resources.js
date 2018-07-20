@@ -13,6 +13,7 @@ export const Book = {
 export const Category = {
   name: 'categories',
   key: 'id',
+
   propTypes: {
     name: PropTypes.string.isRequired,
   },
