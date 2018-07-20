@@ -73,7 +73,7 @@ crudThunks.fetchAll({resource, path, replace = false, params})
 | Name     | Type               | Required | Description                                                                                                                                                      |
 | -------- | ------------------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | resource | ResourceDefinition | yes      | The resource that will be fetched                                                                                                                                |
-| path     | string             |          | An optional path to use to fetch the resource. `resource.defaultPath` is used by default                                                                         |
+| path     | string             |          | An optional path to use to fetch the resources. `resource.defaultPath` is used by default                                                                        |
 | replace  | boolean            |          | If true, all entities in redux will be dropped and replaced with the result from the backend. If false, entities retrieved will be merged with the existing one. |
 | params   | object             |          | An optional object containing query params for the call                                                                                                          |
 
@@ -134,6 +134,46 @@ crudThunks.deleteResource({resource, path, entity})
 | resource | ResourceDefinition | yes      | The resource that will be deleted                                                                                   |
 | path     | string             |          | An optional path to use to fetch the resource. `${resource.defaultPath}/${entity[resource.key]}` is used by default |
 | entity   | object             | yes      | An object containing the properties that will be sent to the backend                                                |
+
+## Providers
+
+Often, you won't need to use the thunks directly.
+Instead, the library provides you with react components that dispatch those actions for you.
+
+### ResourceListProvider
+
+Example:
+
+```js
+<ResourceListProvider crudThunks={crudThunks} resource={BookResource}>
+  {({entities}) => (
+    <ul>{entities.map(book => <li key={book.id}>{book.name}</li>)}</ul>
+  )}
+</ResourceListProvider>
+```
+
+**Props**
+
+| Name            | Type               | Required | Description                                                               |
+| --------------- | ------------------ | -------- | ------------------------------------------------------------------------- |
+| `children`      | function           | yes      | Render prop, see description below                                        |
+| `resource`      | ResourceDefinition | yes      | The resource to use                                                       |
+| `path`          | string             |          | Passed to `crudThunks.fetchAll`                                           |
+| `replace`       | boolean            |          | Passed to `crudThunks.fetchAll`                                           |
+| `params`        | object             |          | Passed to `crudThunks.fetchAll`                                           |
+| `autoFetch`     | boolean            |          | Triggers a call do the backend automatically to refresh the data in redux |
+| `loadingRender` | React Element      |          | A react element to render while data are being fetched                    |
+| `crudThunks`    | object             | yes      | The result of createCrudThunks                                            |
+
+**Children function**
+
+The children function will be called with an object with the following properties:
+
+| Name       | Type     | Description                                         |
+| ---------- | -------- | --------------------------------------------------- |
+| `entities` | array    | The list of entities                                |
+| `fetchAll` | function | A function to trigger a fetch from the backend      |
+| `loading`  | boolean  | `true` when there is an ongoing call to the backend |
 
 # Peer dependencies
 
