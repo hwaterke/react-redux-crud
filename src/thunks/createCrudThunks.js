@@ -262,12 +262,14 @@ export function createCrudThunks(configuration: CrudConfig) {
       path,
       merge = true,
       entity = requiredParam('entity'),
+      method = 'patch',
       body = null,
     }: {
       resource: ResourceDefinition,
       path?: string,
       merge?: boolean,
       entity: any,
+      method: string,
       body: any,
     }) => (dispatch: Function, getState: Function) => {
       const resourcePath =
@@ -289,7 +291,7 @@ export function createCrudThunks(configuration: CrudConfig) {
 
       const promise = axios({
         url: `${config.backendSelector(getState())}/${resourcePath}`,
-        method: 'patch',
+        method,
         headers: config.headersSelector(getState()),
         data: body || entity,
       })
