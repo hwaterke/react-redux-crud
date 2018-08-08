@@ -262,11 +262,13 @@ export function createCrudThunks(configuration: CrudConfig) {
       path,
       merge = true,
       entity = requiredParam('entity'),
+      body = null,
     }: {
       resource: ResourceDefinition,
       path?: string,
       merge?: boolean,
       entity: any,
+      body: any,
     }) => (dispatch: Function, getState: Function) => {
       const resourcePath =
         path ||
@@ -289,7 +291,7 @@ export function createCrudThunks(configuration: CrudConfig) {
         url: `${config.backendSelector(getState())}/${resourcePath}`,
         method: 'patch',
         headers: config.headersSelector(getState()),
-        data: entity,
+        data: body || entity,
       })
 
       promise

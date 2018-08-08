@@ -109,17 +109,18 @@ crudThunks.createResource({resource, path, entity})
 ### Update
 
 ```js
-crudThunks.updateResource({resource, path, merge = true, entity})
+crudThunks.updateResource({resource, path, merge = true, entity, body})
 ```
 
 **Parameters**
 
-| Name     | Type               | Required | Description                                                                                                         |
-| -------- | ------------------ | -------- | ------------------------------------------------------------------------------------------------------------------- |
-| resource | ResourceDefinition | yes      | The resource that will be updated                                                                                   |
-| path     | string             |          | An optional path to use to fetch the resource. `${resource.defaultPath}/${entity[resource.key]}` is used by default |
-| merge    | boolean            |          | Whether or not to merge the `entity` provided with the existing entity in redux for the optimistic update           |
-| entity   | object             | yes      | An object containing the properties that will be sent to the backend                                                |
+| Name     | Type               | Required | Description                                                                                                                                                                                                                                                                                                                                                       |
+| -------- | ------------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| resource | ResourceDefinition | yes      | The resource that will be updated                                                                                                                                                                                                                                                                                                                                 |
+| path     | string             |          | An optional path to use to fetch the resource. `${resource.defaultPath}/${entity[resource.key]}` is used by default                                                                                                                                                                                                                                               |
+| merge    | boolean            |          | Whether or not to merge the `entity` provided with the existing entity in redux for the optimistic update                                                                                                                                                                                                                                                         |
+| entity   | object             | yes      | An object containing the properties that will be sent to the backend                                                                                                                                                                                                                                                                                              |
+| body     | object             |          | Sometimes you are calling a route that will return an updated entity but where the body you send is not such an entity. This is typically the case for custom actions. If you provide a body, it will be used instead of the entity for the request. The response will then be handled like normal and the entity in the store will be updated with the response. |
 
 ### Delete
 
