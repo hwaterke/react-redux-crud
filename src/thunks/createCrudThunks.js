@@ -208,10 +208,12 @@ export function createCrudThunks(configuration: CrudConfig) {
       resource = requiredParam('resource'),
       path,
       entity = requiredParam('entity'),
+      optimistic = true,
     }: {
       resource: ResourceDefinition,
       path?: string,
       entity: any,
+      optimistic: boolean,
     }) => (dispatch: Function, getState: Function) => {
       const resourcePath = path || resource.defaultPath
       invariant(resourcePath, 'You need to specify a path to create a record')
@@ -226,7 +228,9 @@ export function createCrudThunks(configuration: CrudConfig) {
         key: resource.key,
       })
 
-      dispatch(baseActionCreators.createStart(entity))
+      if (optimistic) {
+        dispatch(baseActionCreators.createStart(entity))
+      }
 
       const promise = axios({
         url: `${config.backendSelector(getState())}/${resourcePath}`,
@@ -264,6 +268,7 @@ export function createCrudThunks(configuration: CrudConfig) {
       entity = requiredParam('entity'),
       method = 'patch',
       body = null,
+      optimistic = true,
     }: {
       resource: ResourceDefinition,
       path?: string,
@@ -271,6 +276,7 @@ export function createCrudThunks(configuration: CrudConfig) {
       entity: any,
       method: string,
       body: any,
+      optimistic: boolean,
     }) => (dispatch: Function, getState: Function) => {
       const resourcePath =
         path ||
@@ -287,7 +293,9 @@ export function createCrudThunks(configuration: CrudConfig) {
         key: resource.key,
       })
 
-      dispatch(baseActionCreators.updateStart(entity, {merge}))
+      if (optimistic) {
+        dispatch(baseActionCreators.updateStart(entity, {merge}))
+      }
 
       const promise = axios({
         url: `${config.backendSelector(getState())}/${resourcePath}`,
